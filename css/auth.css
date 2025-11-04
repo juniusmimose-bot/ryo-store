@@ -1,1 +1,96 @@
+/* Styles spécifiques pour l'authentification */
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 5px rgba(0,119,255,0.3);
+}
 
+.auth-form button:hover {
+    background: #0055CC;
+}
+
+.auth-form button:active {
+    transform: translateY(1px);
+}
+
+/* Messages d'erreur/succès */
+.auth-message {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.auth-message.error {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.auth-message.success {
+    background: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+/* Loading state */
+.auth-form button.loading {
+    background: var(--gray-medium);
+    cursor: not-allowed;
+}
+
+.auth-form button.loading::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--primary-white);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* User menu when logged in */
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--primary-white);
+    min-width: 200px;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.user-dropdown.show {
+    display: block;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 1rem;
+    color: var(--primary-black);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gray-medium);
+}
+
+.user-dropdown a:hover {
+    background: var(--gray-light);
+}
+
+.user-dropdown a:last-child {
+    border-bottom: none;
+    color: #c62828;
+}
