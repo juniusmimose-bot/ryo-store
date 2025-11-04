@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryo-Store - Services Digitaux</title>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Ryo-Store</h1>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Accueil</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#wallet" class="nav-link">Portefeuille</a>
+                <a href="#support" class="nav-link">Support</a>
+                <div class="nav-user" id="navUser">
+                    <a href="#" class="nav-link" id="loginBtn">Connexion</a>
+                </div>
+                <div class="nav-cart">
+                    <button class="cart-btn" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Connexion</button>
+                <button class="tab-btn" data-tab="register">Inscription</button>
+            </div>
+            
+            <form id="loginForm" class="auth-form active">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Mot de passe" required>
+                <button type="submit">Se connecter</button>
+            </form>
+            
+            <form id="registerForm" class="auth-form">
+                <input type="text" placeholder="Nom complet" required>
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="Numéro WhatsApp" required>
+                <input type="password" placeholder="Mot de passe" required>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>Services Digitaux Premium</h2>
+                <p>Free Fire, Netflix, Recharges et Développement Web</p>
+                <button class="cta-btn" id="exploreBtn">Explorer les services</button>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Nos Services</h2>
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Les services seront chargés dynamiquement -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Wallet Section -->
+        <section id="wallet" class="wallet">
+            <div class="container">
+                <h2>Mon Portefeuille</h2>
+                <div class="wallet-balance">
+                    <h3>Solde: <span id="walletBalance">0</span> HTG</h3>
+                    <button class="deposit-btn" id="depositBtn">Déposer des fonds</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal">
+            <span class="close">&times;</span>
+            <h3>Mon Panier</h3>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                Total: <span id="cartTotal">0</span> HTG
+            </div>
+            <button id="checkoutBtn" class="checkout-btn">Valider la commande</button>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div id="depositModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Déposer des fonds</h3>
+            <div class="deposit-methods">
+                <div class="method" data-method="moncash">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Moncash</span>
+                </div>
+                <div class="method" data-method="natcash">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Natcash</span>
+                </div>
+                <div class="method" data-method="crypto">
+                    <i class="fas fa-coins"></i>
+                    <span>Crypto</span>
+                </div>
+            </div>
+            <form id="depositForm" class="deposit-form"></form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wallet.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+      </html>
