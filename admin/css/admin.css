@@ -1,1 +1,395 @@
+/* Styles spécifiques à l'interface admin */
+.admin-header {
+    background: linear-gradient(135deg, #003366, #001a33);
+}
 
+.admin-header .logo h1 {
+    color: #FFD700;
+}
+
+.admin-main {
+    margin-top: 80px;
+    padding: 2rem 0;
+    min-height: calc(100vh - 80px);
+    background: #f8f9fa;
+}
+
+.admin-section {
+    display: none;
+}
+
+.admin-section.active {
+    display: block;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    border-left: 4px solid #0077FF;
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: #0077FF;
+    margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Tables Admin */
+.admin-table-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.admin-table th {
+    background: #003366;
+    color: white;
+    font-weight: 600;
+}
+
+.admin-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Badges de statut */
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-validated {
+    background: #d1edff;
+    color: #004085;
+}
+
+.status-completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-rejected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Boutons d'action */
+.action-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin: 0.2rem;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: #0077FF;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0055CC;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background: #e0a800;
+}
+
+/* Modals admin */
+.deposit-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.deposit-actions button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+/* Détails commande */
+.order-item {
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-item-info {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+.order-total {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #e0e0e0;
+}
+
+/* Détails dépôt */
+.deposit-proof {
+    max-width: 300px;
+    margin: 1rem 0;
+}
+
+.deposit-proof img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.deposit-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.deposit-info-item {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.deposit-info-item strong {
+    display: block;
+    color: #003366;
+    margin-bottom: 0.5rem;
+}
+
+/* Navigation admin */
+.admin-nav-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.admin-nav-tab {
+    padding: 1rem 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.admin-nav-tab.active {
+    border-bottom-color: #0077FF;
+    color: #0077FF;
+    font-weight: 600;
+}
+
+.admin-nav-tab:hover {
+    background: #f8f9fa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-table-container {
+        overflow-x: auto;
+    }
+    
+    .admin-table {
+        min-width: 800px;
+    }
+    
+    .deposit-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .order-item-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-nav-tabs {
+        flex-direction: column;
+    }
+    
+    .admin-nav-tab {
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .admin-nav-tab.active {
+        border-bottom-color: #0077FF;
+        border-left: 3px solid #0077FF;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '...';
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0%, 33% { content: '.'; }
+    34%, 66% { content: '..'; }
+    67%, 100% { content: '...'; }
+}
+
+/* Empty states */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ccc;
+}
+
+/* Filtres */
+.admin-filters {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background: white;
+}
+
+.filter-input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+/* Notifications admin */
+.admin-notification {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    color: white;
+    z-index: 3000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+.notification-success {
+    background: #28a745;
+}
+
+.notification-error {
+    background: #dc3545;
+}
+
+.notification-warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+      }
