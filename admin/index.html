@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Ryo-Store</title>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="header admin-header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-crown"></i> Ryo-Store Admin</h1>
+            </div>
+            <nav class="nav">
+                <a href="#dashboard" class="nav-link active">Tableau de bord</a>
+                <a href="#orders" class="nav-link">Commandes</a>
+                <a href="#deposits" class="nav-link">Dépôts</a>
+                <a href="#users" class="nav-link">Utilisateurs</a>
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Site</a>
+                <a href="#" class="nav-link" id="adminLogoutBtn">Déconnexion</a>
+            </nav>
+        </div>
+    </header>
 
+    <!-- Admin Main Content -->
+    <main class="admin-main">
+        <div class="container">
+            <!-- Dashboard -->
+            <section id="dashboard" class="admin-section active">
+                <h2>Tableau de Bord</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3 id="pendingOrdersCount">0</h3>
+                        <p>Commandes en attente</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3 id="pendingDepositsCount">0</h3>
+                        <p>Dépôts en attente</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3 id="totalUsersCount">0</h3>
+                        <p>Utilisateurs total</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3 id="totalRevenue">0 HTG</h3>
+                        <p>Revenu total</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Management -->
+            <section id="orders" class="admin-section">
+                <h2>Gestion des Commandes</h2>
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Client</th>
+                                <th>Produits</th>
+                                <th>Total</th>
+                                <th>Date</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <!-- Les commandes seront chargées ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Deposits Management -->
+            <section id="deposits" class="admin-section">
+                <h2>Gestion des Dépôts</h2>
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Client</th>
+                                <th>Méthode</th>
+                                <th>Montant</th>
+                                <th>Preuve</th>
+                                <th>Date</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="depositsTableBody">
+                            <!-- Les dépôts seront chargés ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Users Management -->
+            <section id="users" class="admin-section">
+                <h2>Gestion des Utilisateurs</h2>
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>WhatsApp</th>
+                                <th>Solde</th>
+                                <th>Inscription</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Les utilisateurs seront chargés ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Order Details Modal -->
+    <div id="orderDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Détails de la Commande</h3>
+            <div id="orderDetailsContent"></div>
+        </div>
+    </div>
+
+    <!-- Deposit Details Modal -->
+    <div id="depositDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Détails du Dépôt</h3>
+            <div id="depositDetailsContent"></div>
+            <div class="deposit-actions">
+                <button class="btn-success" id="validateDepositBtn">Valider le dépôt</button>
+                <button class="btn-danger" id="rejectDepositBtn">Rejeter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/firebase-config.js"></script>
+    <script src="js/admin-panel.js"></script>
+</body>
+                  </html>
